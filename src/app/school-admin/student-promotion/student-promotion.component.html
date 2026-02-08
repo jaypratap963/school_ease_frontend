@@ -1,0 +1,111 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-4">Student Promotion</h5>
+
+    <!-- SESSION & CLASS SELECTION -->
+    <div class="row mb-4">
+
+      <!-- FROM SESSION -->
+      <div class="col-md-3">
+        <label class="form-label">From Session</label>
+        <ng-select
+          [items]="sessions"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="fromSessionId"
+          placeholder="Select session">
+        </ng-select>
+      </div>
+
+      <!-- TO SESSION -->
+      <div class="col-md-3">
+        <label class="form-label">To Session</label>
+        <ng-select
+          [items]="sessions"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="toSessionId"
+          placeholder="Select session">
+        </ng-select>
+      </div>
+
+      <!-- FROM CLASS -->
+      <div class="col-md-3">
+        <label class="form-label">From Class</label>
+        <ng-select
+          [items]="classes"
+          bindLabel="class_name"
+          bindValue="id"
+          [(ngModel)]="fromClassId"
+          (change)="loadStudents()"
+          placeholder="Select class">
+        </ng-select>
+      </div>
+
+      <!-- TO CLASS -->
+      <div class="col-md-3">
+        <label class="form-label">To Class</label>
+        <ng-select
+          [items]="classes"
+          bindLabel="class_name"
+          bindValue="id"
+          [(ngModel)]="toClassId"
+          placeholder="Select class">
+        </ng-select>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <!-- STUDENT LIST -->
+    <div *ngIf="students.length; else noStudents">
+
+      <h6 class="mb-3">
+        Select Students ({{ selectedStudentIds.length }} selected)
+      </h6>
+
+      <div
+        class="card mb-2"
+        *ngFor="let student of students"
+      >
+        <div class="card-body d-flex justify-content-between align-items-center">
+
+          <div>
+            <strong>{{ student.name }}</strong>
+            <div class="text-xs text-muted">
+              Roll No: {{ student.roll_no || 'N/A' }}
+            </div>
+          </div>
+
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              (change)="toggle(student.id, $event)"
+            />
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACTION BUTTON -->
+      <button
+        class="btn bg-gradient-primary w-100 mt-4"
+        (click)="promote()"
+      >
+        Promote Selected Students
+      </button>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <ng-template #noStudents>
+      <div class="alert alert-info">
+        No students found for the selected class.
+      </div>
+    </ng-template>
+
+  </div>
+</div>

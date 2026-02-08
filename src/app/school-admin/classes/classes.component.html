@@ -1,0 +1,56 @@
+<div class="card mb-4">
+  <div class="card-body">
+
+    <h5 class="mb-3">Create Class</h5>
+
+    <div class="mb-3">
+      <input
+        class="form-control"
+        placeholder="Class (e.g. 10)"
+        [(ngModel)]="class_name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <input
+        class="form-control"
+        placeholder="Section (e.g. A)"
+        [(ngModel)]="section"
+      />
+    </div>
+
+    <div class="mb-3">
+      <select class="form-select" [(ngModel)]="teacher_id">
+        <option [ngValue]="null">Assign Class Teacher (optional)</option>
+        <option *ngFor="let t of teachers" [value]="t.id">
+          {{ t.name }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      class="btn bg-gradient-primary w-100"
+      [disabled]="loading"
+      (click)="createClass()">
+      {{ loading ? 'Creating...' : 'Create Class' }}
+    </button>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="mb-3">Classes</h5>
+
+    <div *ngIf="!classes.length" class="text-muted">
+      No classes created yet.
+    </div>
+
+    <div *ngFor="let c of classes" class="border-bottom py-2">
+      <strong>{{ c.class_name }} - {{ c.section }}</strong>
+      <div class="text-sm text-muted">
+        Class Teacher: {{ c.teacher_name || 'Not Assigned' }}
+      </div>
+    </div>
+  </div>
+</div>

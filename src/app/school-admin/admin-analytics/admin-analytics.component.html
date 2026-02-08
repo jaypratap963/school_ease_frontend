@@ -1,0 +1,97 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-4">School Analytics Dashboard</h5>
+
+    <!-- Attendance Summary -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h6>Overall Attendance</h6>
+            <h2>{{ attendanceSummary?.percentage }}%</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attendance by Class -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6>Attendance by Class</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Class</th>
+            <th>%</th>
+          </tr>
+          <tr *ngFor="let c of attendanceByClass">
+            <td>{{ c.class_name }} {{ c.section }}</td>
+            <td [class]="riskClass(c.percentage)">
+              {{ c.percentage }}%
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Attendance Risk -->
+    <div class="card mb-4" *ngIf="attendanceRiskStudents.length">
+      <div class="card-body">
+        <h6 class="text-danger">Low Attendance Students</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>%</th>
+          </tr>
+          <tr *ngFor="let s of attendanceRiskStudents">
+            <td>{{ s.name }}</td>
+            <td>{{ s.class_name }}</td>
+            <td class="text-danger">{{ s.percentage }}%</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Marks by Exam -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6>Exam Performance</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Exam</th>
+            <th>Average</th>
+          </tr>
+          <tr *ngFor="let e of marksByExam">
+            <td>{{ e.exam_name }}</td>
+            <td>{{ e.avg_marks }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Marks Risk -->
+    <div class="card" *ngIf="marksRiskStudents.length">
+      <div class="card-body">
+        <h6 class="text-danger">Low Marks Students</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Marks</th>
+          </tr>
+          <tr *ngFor="let s of marksRiskStudents">
+            <td>{{ s.name }}</td>
+            <td>{{ s.class_name }}</td>
+            <td class="text-danger">{{ s.marks }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

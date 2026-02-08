@@ -1,0 +1,178 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+  id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
+      aria-hidden="true" (click)="toggleSidebar()"></i>
+
+    <a class="navbar-brand m-0">
+      <img src="/assets/img/logo-ct.png" class="navbar-brand-img h-100" />
+      <span class="ms-1 font-weight-bold">School ERP</span>
+    </a>
+  </div>
+
+  <hr class="horizontal dark mt-0" />
+
+  <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+
+      <!-- SUPER ADMIN -->
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/super-admin/create-school')"
+          (click)="navigate('/app/super-admin/create-school')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-building text-dark"></i>
+          </div>
+          <span class="nav-link-text">Create School</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/super-admin/create-school-admin')"
+          (click)="navigate('/app/super-admin/create-school-admin')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-single-02 text-dark"></i>
+          </div>
+          <span class="nav-link-text">Create School Admin</span>
+        </a>
+      </li>
+
+      <!-- SCHOOL ADMIN -->
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/academic-sessions')"
+          (click)="navigate('/app/school-admin/academic-sessions')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-calendar-grid-58 text-dark"></i>
+          </div>
+          <span class="nav-link-text">Academic Sessions</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/teachers')"
+          (click)="navigate('/app/school-admin/teachers')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-hat-3 text-dark"></i>
+          </div>
+          <span class="nav-link-text">Teachers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/classes')"
+          (click)="navigate('/app/school-admin/classes')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-layers text-dark"></i>
+          </div>
+          <span class="nav-link-text">Classes</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/students')"
+          (click)="navigate('/app/school-admin/students')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-circle-08 text-dark"></i>
+          </div>
+          <span class="nav-link-text">Students</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/assignments')"
+          (click)="navigate('/app/school-admin/assignments')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-bullet-list-67 text-dark"></i>
+          </div>
+          <span class="nav-link-text">Assignments</span>
+        </a>
+      </li>
+
+      <!-- TEACHER -->
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/teacher/attendance')"
+          (click)="navigate('/app/teacher/attendance')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-check-bold text-dark"></i>
+          </div>
+          <span class="nav-link-text">Attendance</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/teacher/marks')" (click)="navigate('/app/teacher/marks')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-ruler-pencil text-dark"></i>
+          </div>
+          <span class="nav-link-text">Marks</span>
+        </a>
+      </li>
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
+          Admissions
+        </h6>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/applicants')"
+          (click)="navigate('/app/school-admin/admissions/applicants')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-single-copy-04 text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">Applicants</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/applicant-create')"
+          (click)="navigate('/app/school-admin/admissions/applicant-create')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-fat-add text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">New Applicant</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/entrance-exam')"
+          (click)="navigate('/app/school-admin/admissions/entrance-exam')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-ruler-pencil text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">Entrance Exam</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/admission-offers')"
+          (click)="navigate('/app/school-admin/admissions/admission-offers')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-check-bold text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">Admission Offers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/fee')"
+          (click)="navigate('/app/school-admin/admissions/fee')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-credit-card text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">Admission Fee</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/admissions/enrollment')"
+          (click)="navigate('/app/school-admin/admissions/enrollment')">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-badge text-dark"></i>
+          </div>
+          <span class="nav-link-text ms-1">Enrollment</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</aside>

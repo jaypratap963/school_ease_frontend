@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <h5>Applicants</h5>
+    <button class="btn bg-gradient-primary"
+            (click)="navigateNew()">
+      + New Applicant
+    </button>
+  </div>
+
+  <div class="card-body table-responsive">
+    <table class="table align-items-center mb-0">
+      <thead>
+        <tr>
+          <th>Application No</th>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let a of applicants">
+          <td>{{ a.application_no }}</td>
+          <td>{{ a.full_name }}</td>
+          <td>{{ a.applying_class_id }}</td>
+          <td>
+            <span class="badge"
+              [ngClass]="{
+                'bg-warning': a.status === 'pending',
+                'bg-info': a.status === 'exam_assigned',
+                'bg-success': a.status === 'qualified',
+                'bg-danger': a.status === 'rejected',
+                'bg-primary': a.status === 'applied'
+              }">
+              {{ a.status }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-sm bg-gradient-info"
+              (click)="openExam(a)">
+              Exam
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

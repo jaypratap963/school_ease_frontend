@@ -1,0 +1,103 @@
+<!-- SESSION INFO -->
+<div class="card mb-4">
+  <div class="card-body">
+    <h5>School Dashboard</h5>
+    <p class="mb-0 text-sm">
+      Active Session:
+      <strong>{{ session?.name || 'Not set' }}</strong>
+    </p>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="row">
+
+  <div class="col-md-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h6>Students</h6>
+        <h3>{{ stats?.students }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h6>Teachers</h6>
+        <h3>{{ stats?.teachers }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h6>Classes</h6>
+        <h3>{{ stats?.classes }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h6>Attendance Today</h6>
+        <h3>{{ stats?.attendanceToday }}%</h3>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MARKS STATUS -->
+<div class="row mt-4">
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h6>Marks Status</h6>
+        <p class="mb-1">
+          Pending:
+          <strong>{{ stats?.marks.pending }}</strong>
+        </p>
+        <p class="mb-0">
+          Locked:
+          <strong>{{ stats?.marks.locked }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h6>Quick Actions</h6>
+
+        <a
+          routerLink="/app/school-admin/academic-sessions"
+          class="btn btn-sm bg-gradient-primary me-2"
+        >
+          Academic Sessions
+        </a>
+
+        <a
+          routerLink="/app/school-admin/student-promotion"
+          class="btn btn-sm bg-gradient-secondary me-2"
+        >
+          Promote Students
+        </a>
+
+        <a
+          routerLink="/app/school-admin/teachers"
+          class="btn btn-sm bg-gradient-info"
+        >
+          Manage Teachers
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+</div>

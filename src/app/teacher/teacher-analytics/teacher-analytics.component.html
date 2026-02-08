@@ -1,0 +1,128 @@
+<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Teacher Analytics</h5>
+
+    <!-- Filters -->
+    <div class="row mb-3">
+
+      <div class="col-md-4">
+        <ng-select
+          [items]="classes"
+          bindLabel="class_name"
+          bindValue="id"
+          [(ngModel)]="selectedClassId"
+          (change)="onClassChange()"
+          placeholder="Select Class">
+        </ng-select>
+      </div>
+
+      <div class="col-md-4">
+        <ng-select
+          [items]="subjects"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="selectedSubjectId"
+          (change)="loadMarksAnalytics()"
+          [disabled]="!selectedClassId"
+          placeholder="Select Subject">
+        </ng-select>
+      </div>
+
+      <div class="col-md-4">
+        <ng-select
+          [items]="exams"
+          bindLabel="name"
+          bindValue="id"
+          [(ngModel)]="selectedExamId"
+          (change)="loadMarksAnalytics()"
+          [disabled]="!selectedSubjectId"
+          placeholder="Select Exam">
+        </ng-select>
+      </div>
+
+    </div>
+
+    <!-- Attendance Summary -->
+    <div class="card mb-3" *ngIf="attendanceSummary">
+      <div class="card-body">
+        <h6>Attendance Summary</h6>
+        <p>
+          Class Attendance:
+          <strong>{{ attendanceSummary.percentage }}%</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Attendance Table -->
+    <div class="card mb-3" *ngIf="attendanceStudents.length">
+      <div class="card-body">
+        <h6>Student Attendance</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Student</th>
+            <th>%</th>
+          </tr>
+          <tr *ngFor="let s of attendanceStudents">
+            <td>{{ s.name }}</td>
+            <td [class]="getRiskLabel(s.percentage)">
+              {{ s.percentage }}%
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Marks Summary -->
+    <div class="row" *ngIf="marksSummary">
+
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h6>Average</h6>
+            <h3>{{ marksSummary.avg }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h6>Highest</h6>
+            <h3>{{ marksSummary.max }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h6>Lowest</h6>
+            <h3>{{ marksSummary.min }}</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Marks Table -->
+    <div class="card mt-3" *ngIf="marksStudents.length">
+      <div class="card-body">
+        <h6>Student Marks</h6>
+
+        <table class="table table-sm">
+          <tr>
+            <th>Student</th>
+            <th>Marks</th>
+          </tr>
+          <tr *ngFor="let s of marksStudents">
+            <td>{{ s.name }}</td>
+            <td>{{ s.marks_obtained }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

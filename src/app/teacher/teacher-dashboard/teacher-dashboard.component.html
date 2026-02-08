@@ -1,0 +1,49 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h5>Welcome, {{ teacher?.name }}</h5>
+    <p class="text-sm mb-0">
+      Active Session:
+      <strong>{{ session?.name }}</strong>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div
+    class="col-md-4"
+    *ngFor="let a of assignments"
+  >
+    <div class="card mb-3">
+      <div class="card-body">
+
+        <h6>
+          {{ a.class_name }} - {{ a.section }}
+        </h6>
+
+        <p class="text-sm mb-1">
+          Subject: <strong>{{ a.subject_name }}</strong>
+        </p>
+
+        <p class="text-sm mb-2">
+          Students:
+          <strong>{{ getStudentCount(a.class_id) }}</strong>
+        </p>
+
+        <a
+          class="btn btn-sm bg-gradient-primary me-2"
+          routerLink="/app/teacher/attendance"
+        >
+          Attendance
+        </a>
+
+        <a
+          class="btn btn-sm bg-gradient-secondary"
+          routerLink="/app/teacher/marks"
+        >
+          Marks
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>

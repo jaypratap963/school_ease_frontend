@@ -1,0 +1,46 @@
+<div class="card mb-4">
+  <div class="card-body">
+
+    <h5 class="mb-3">Create Teacher</h5>
+
+    <div class="mb-3">
+      <input class="form-control" placeholder="Name" [(ngModel)]="name" />
+    </div>
+
+    <div class="mb-3">
+      <input class="form-control" placeholder="Email" [(ngModel)]="email" />
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="password"
+      />
+    </div>
+
+    <button
+      class="btn bg-gradient-primary w-100"
+      [disabled]="loading"
+      (click)="createTeacher()">
+      {{ loading ? 'Creating...' : 'Create Teacher' }}
+    </button>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="mb-3">Teachers</h5>
+
+    <div *ngIf="!teachers.length" class="text-muted">
+      No teachers created yet.
+    </div>
+
+    <div *ngFor="let t of teachers" class="border-bottom py-2">
+      <strong>{{ t.name }}</strong>
+      <div class="text-sm text-muted">{{ t.email }}</div>
+    </div>
+  </div>
+</div>

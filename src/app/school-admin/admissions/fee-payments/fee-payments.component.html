@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Admission Fees</h5>
+  </div>
+
+  <div class="card-body table-responsive">
+
+    <div *ngIf="loading" class="text-center py-3">
+      Loading fees...
+    </div>
+
+    <table class="table table-hover" *ngIf="!loading">
+      <thead>
+        <tr>
+          <th>Applicant</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let f of fees">
+          <td>{{ f.applicant_name }}</td>
+          <td>₹ {{ f.amount }}</td>
+          <td>
+            <span class="badge bg-warning" *ngIf="f.status === 'PENDING'">
+              PENDING
+            </span>
+            <span class="badge bg-success" *ngIf="f.status === 'PAID'">
+              PAID
+            </span>
+          </td>
+          <td>
+            <button
+              *ngIf="f.status === 'PENDING'"
+              class="btn btn-sm bg-gradient-success"
+              (click)="pay(f.id)">
+              Pay (Mock)
+            </button>
+            <span *ngIf="f.status === 'PAID'">—</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

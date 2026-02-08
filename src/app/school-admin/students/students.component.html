@@ -1,0 +1,58 @@
+<div class="card mb-4">
+  <div class="card-body">
+
+    <h5 class="mb-3">Create Student</h5>
+
+    <div class="mb-3">
+      <input
+        class="form-control"
+        placeholder="Student name"
+        [(ngModel)]="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <input
+        class="form-control"
+        placeholder="Roll number (optional)"
+        [(ngModel)]="roll_no"
+      />
+    </div>
+
+    <div class="mb-3">
+      <select
+        class="form-select"
+        [(ngModel)]="class_id"
+        (change)="loadStudents()"
+      >
+        <option [ngValue]="null">Select class</option>
+        <option *ngFor="let c of classes" [value]="c.id">
+          {{ c.class_name }} - {{ c.section }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      class="btn bg-gradient-primary w-100"
+      [disabled]="loading"
+      (click)="createStudent()">
+      {{ loading ? 'Creating...' : 'Create Student' }}
+    </button>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="mb-3">Students</h5>
+
+    <div *ngIf="!students.length" class="text-muted">
+      No students found for this class.
+    </div>
+
+    <div *ngFor="let s of students" class="border-bottom py-2">
+      <strong>{{ s.name }}</strong>
+      <span class="text-muted ms-2">{{ s.roll_no }}</span>
+    </div>
+  </div>
+</div>

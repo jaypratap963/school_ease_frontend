@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Create Applicant</h5>
+  </div>
+
+  <div class="card-body">
+    <form (ngSubmit)="submit()">
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>Full Name *</label>
+          <input class="form-control" [(ngModel)]="form.full_name" name="full_name" required />
+        </div>
+
+        <div class="col-md-6">
+          <label>Applying Class *</label>
+          <select class="form-control"
+                  [(ngModel)]="form.applying_class_id"
+                  name="class"
+                  required>
+            <option *ngFor="let c of classes" [value]="c.id">
+              {{ c.class_name }} - {{ c.section }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <label>Primary Contact *</label>
+          <input class="form-control"
+                 [(ngModel)]="form.primary_contact"
+                 name="contact"
+                 required />
+        </div>
+
+        <div class="col-md-6">
+          <label>Email</label>
+          <input class="form-control"
+                 [(ngModel)]="form.email"
+                 name="email" />
+        </div>
+      </div>
+
+      <div class="mt-4 text-end">
+        <button class="btn bg-gradient-success">
+          Save Applicant
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

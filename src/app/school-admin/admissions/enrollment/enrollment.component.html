@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Generate Enrollment</h5>
+  </div>
+
+  <div class="card-body table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Applicant</th>
+          <th>Amount Paid</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let f of paidFees">
+          <td>{{ f.applicant_name }}</td>
+          <td>₹ {{ f.amount }}</td>
+          <td>
+            <button
+              class="btn btn-sm bg-gradient-primary"
+              (click)="enroll(f.id)">
+              Generate Enrollment
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

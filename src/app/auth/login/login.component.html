@@ -1,0 +1,58 @@
+<main class="main-content mt-0">
+    <section>
+        <div class="page-header min-vh-100">
+            <div class="container">
+                <div class="row">
+                    <!-- LEFT SIDE (DESKTOP ONLY) -->
+                    <div class="col-lg-6 d-none d-lg-flex justify-content-center flex-column">
+                        <h1 class="text-gradient text-primary font-weight-bold">
+                            Welcome to SchoolEase
+                        </h1>
+                        <p class="mb-4">
+                            Simple, secure and fast school management system designed for
+                            teachers and administrators.
+                        </p>
+                    </div>
+
+                    <!-- LOGIN CARD -->
+                    <div class="col-lg-5 col-md-7 col-12 mx-auto">
+                        <div class="card z-index-0 fadeIn3 fadeInBottom">
+                            <div class="card-header text-center pt-4">
+                                <h5>Sign in</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <form (ngSubmit)="submit()">
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email"
+                                            name="email" required />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            [(ngModel)]="password" name="password" required />
+                                    </div>
+
+                                    <div *ngIf="error" class="text-danger text-sm mb-2">
+                                        {{ error }}
+                                    </div>
+
+                                    <button type="submit" class="btn bg-gradient-primary w-100" [disabled]="loading">
+                                        {{ loading ? 'Signing in...' : 'Sign in' }}
+                                    </button>
+                                </form>
+
+                            </div>
+
+                            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                                <small class="text-muted">
+                                    For school staff only. Contact admin if you have trouble.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

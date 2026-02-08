@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Entrance Exam</h5>
+  </div>
+
+  <div class="card-body" *ngIf="!exam">
+    <label>Exam Date</label>
+    <input type="date" class="form-control" [(ngModel)]="examDate">
+
+    <label class="mt-2">Max Marks</label>
+    <input class="form-control" [(ngModel)]="maxMarks">
+
+    <label class="mt-2">Pass Marks</label>
+    <input class="form-control" [(ngModel)]="passMarks">
+
+    <button class="btn bg-gradient-primary mt-3"
+            (click)="assignExam()">
+      Assign Exam
+    </button>
+  </div>
+
+  <div class="card-body" *ngIf="exam && (exam.status === 'exam_assigned' || exam.status == 'scheduled')">
+    <label>Marks Obtained</label>
+    <input class="form-control" [(ngModel)]="marks">
+
+    <button class="btn bg-gradient-success mt-3"
+            (click)="evaluate()">
+      Evaluate
+    </button>
+  </div>
+
+  <div class="alert alert-success" *ngIf="exam?.status === 'evaluated'">
+    Exam Evaluated – {{ examResult }}
+  </div>
+</div>

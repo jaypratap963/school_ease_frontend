@@ -1,0 +1,36 @@
+<div class="card mb-4">
+  <div class="card-body">
+
+    <h5 class="mb-3">Create Subject</h5>
+
+    <div class="mb-3">
+      <input
+        class="form-control"
+        placeholder="Subject name"
+        [(ngModel)]="name"
+      />
+    </div>
+
+    <button
+      class="btn bg-gradient-primary w-100"
+      [disabled]="loading"
+      (click)="createSubject()">
+      {{ loading ? 'Creating...' : 'Create Subject' }}
+    </button>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="mb-3">Subjects</h5>
+
+    <div *ngIf="!subjects.length" class="text-muted">
+      No subjects created yet.
+    </div>
+
+    <div *ngFor="let s of subjects" class="border-bottom py-2">
+      {{ s.name }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-body">
+    <h5>Admission Offer</h5>
+
+    <ng-select
+      [items]="applicants"
+      bindLabel="full_name"
+      bindValue="id"
+      [(ngModel)]="selectedApplicant"
+      placeholder="Select Applicant">
+    </ng-select>
+
+    <ng-select
+      class="mt-3"
+      [items]="sessions"
+      bindLabel="name"
+      bindValue="id"
+      [(ngModel)]="selectedSession"
+      placeholder="Academic Session">
+    </ng-select>
+
+    <ng-select
+      class="mt-3"
+      [items]="classes"
+      bindLabel="class_name"
+      bindValue="id"
+      [(ngModel)]="selectedClass"
+      placeholder="Class">
+    </ng-select>
+
+    <button
+      class="btn bg-gradient-primary mt-3"
+      (click)="createOffer()"
+      [disabled]="loading">
+      Create Offer
+    </button>
+  </div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Applicant</th>
+      <th>Class</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let o of offers">
+  <td>{{ o.applicant_name }}</td>
+  <td>{{ o.offer_status }}</td>
+
+  <td *ngIf="o.offer_status === 'OFFERED'">
+    <button
+      class="btn btn-sm bg-gradient-success me-2"
+      (click)="respond(o.id, 'ACCEPTED')">
+      Accept
+    </button>
+
+    <button
+      class="btn btn-sm bg-gradient-danger"
+      (click)="respond(o.id, 'REJECTED')">
+      Reject
+    </button>
+  </td>
+
+  <td *ngIf="o.offer_status === 'ACCEPTED'">
+    <button
+      class="btn btn-sm bg-gradient-primary"
+      (click)="generateFee(o)">
+      Create Admission Fee
+    </button>
+  </td>
+</tr>
+  </tbody>
+</table>
+
+</div>

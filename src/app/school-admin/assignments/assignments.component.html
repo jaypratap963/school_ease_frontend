@@ -1,0 +1,57 @@
+<div class="card mb-4">
+  <div class="card-body">
+
+    <h5 class="mb-3">Assign Teacher to Subject</h5>
+
+    <div class="mb-3">
+      <select class="form-select" [(ngModel)]="teacher_id">
+        <option [ngValue]="null">Select Teacher</option>
+        <option *ngFor="let t of teachers" [value]="t.id">
+          {{ t.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <select class="form-select" [(ngModel)]="class_id">
+        <option [ngValue]="null">Select Class</option>
+        <option *ngFor="let c of classes" [value]="c.id">
+          {{ c.class_name }} - {{ c.section }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <select class="form-select" [(ngModel)]="subject_id">
+        <option [ngValue]="null">Select Subject</option>
+        <option *ngFor="let s of subjects" [value]="s.id">
+          {{ s.name }}
+        </option>
+      </select>
+    </div>
+
+    <button
+      class="btn bg-gradient-primary w-100"
+      [disabled]="loading"
+      (click)="assign()">
+      {{ loading ? 'Assigning...' : 'Assign' }}
+    </button>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="mb-3">Existing Assignments</h5>
+
+    <div *ngIf="!assignments.length" class="text-muted">
+      No assignments created yet.
+    </div>
+
+    <div *ngFor="let a of assignments" class="border-bottom py-2">
+      <strong>{{ a.teacher_name }}</strong> →
+      {{ a.class_name }} {{ a.section }} →
+      {{ a.subject_name }}
+    </div>
+  </div>
+</div>
