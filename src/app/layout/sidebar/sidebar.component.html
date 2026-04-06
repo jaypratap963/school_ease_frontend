@@ -86,6 +86,24 @@
           <span class="nav-link-text">Assignments</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/timetable/admin')"
+          (click)="navigate('/app/timetable/admin')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-time-alarm text-dark"></i>
+          </div>
+          <span class="nav-link-text">Timetable</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/timetable/teacher')"
+          (click)="navigate('/app/timetable/teacher')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-bullet-list-67 text-dark"></i>
+          </div>
+          <span class="nav-link-text">My Timetable</span>
+        </a>
+      </li>
 
       <!-- TEACHER -->
       <li class="nav-item">

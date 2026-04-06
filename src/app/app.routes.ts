@@ -24,6 +24,8 @@ import { FeeStructuresComponent } from './school-admin/admissions/fee-structures
 import { AdmissionOffersComponent } from './school-admin/admissions/admission-offers/admission-offers.component';
 import { EnrollmentComponent } from './school-admin/admissions/enrollment/enrollment.component';
 import { FeePaymentsComponent } from './school-admin/admissions/fee-payments/fee-payments.component';
+import { TimetableAdminComponent } from './school-admin/timetable-admin/timetable-admin.component';
+import { TimetableTeacherComponent } from './school-admin/timetable-teacher/timetable-teacher.component';
 
 // (Dashboards will be added later)
 export const routes: Routes = [
@@ -166,6 +168,23 @@ export const routes: Routes = [
         component: FeePaymentsComponent,
         canActivate: [authGuard],
         data: { roles: ['school_admin'] },
+      },
+      {
+        path: 'timetable',
+        children: [
+          {
+            path: 'admin',
+            component: TimetableAdminComponent,
+            canActivate: [authGuard],
+            data: { roles: ['school_admin'] },
+          },
+          {
+            path: 'teacher',
+            component: TimetableTeacherComponent,
+            canActivate: [authGuard],
+            data: { roles: ['teacher'] },
+          },
+        ],
       },
     ],
   },

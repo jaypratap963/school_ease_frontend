@@ -1,0 +1,32 @@
+<p>timetable-admin works!</p>
+<div class="card p-4">
+  <h5>Create Timetable</h5>
+
+  <input [(ngModel)]="academicSessionId" placeholder="Academic Session ID" class="form-control mb-2" />
+  <input [(ngModel)]="classId" placeholder="Class ID" class="form-control mb-2" />
+
+  <button class="btn btn-primary" (click)="createTimetable()">Create / Load</button>
+</div>
+
+<hr />
+
+<div class="card p-4" *ngIf="timetableId">
+  <h5>Add Period</h5>
+
+  <select [(ngModel)]="period.day_of_week" class="form-control mb-2">
+    <option [value]="1">Monday</option>
+    <option [value]="2">Tuesday</option>
+    <option [value]="3">Wednesday</option>
+    <option [value]="4">Thursday</option>
+    <option [value]="5">Friday</option>
+    <option [value]="6">Saturday</option>
+  </select>
+
+  <input [(ngModel)]="period.period_no" type="number" placeholder="Period No" class="form-control mb-2" />
+  <input [(ngModel)]="period.start_time" type="time" class="form-control mb-2" />
+  <input [(ngModel)]="period.end_time" type="time" class="form-control mb-2" />
+  <input [(ngModel)]="period.subject_id" placeholder="Subject ID" class="form-control mb-2" />
+  <input [(ngModel)]="period.teacher_id" placeholder="Teacher ID" class="form-control mb-2" />
+
+  <button class="btn btn-success" (click)="addPeriod()">Add Period</button>
+</div>
