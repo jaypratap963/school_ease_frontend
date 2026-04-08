@@ -61,9 +61,18 @@
         <a class="nav-link" [class.active]="isActive('/app/school-admin/classes')"
           (click)="navigate('/app/school-admin/classes')">
           <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
-            <i class="ni ni-layers text-dark"></i>
+            <i class="ni ni-air-baloon text-dark"></i>
           </div>
           <span class="nav-link-text">Classes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="isActive('/app/school-admin/subjects')"
+          (click)="navigate('/app/school-admin/subjects')">
+          <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2">
+            <i class="ni ni-atom text-dark"></i>
+          </div>
+          <span class="nav-link-text">Subjects</span>
         </a>
       </li>
 
